@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Random jokes</title>
+
+<style>
+    body{
+        background: #363333; 
+
+    }
+</style>
+</head>
+<body >
+
+    
+    <div class="container mt-28 bg-slate-700 border-2 border-amber-500  w-80 h-70 mx-auto relative  ">
+     <div class=" p-3 text-white border-l-green-960 ">
+    
+    
+    
+         <h3 class="text-center text-2xl font-semibold mb-7">Get Random Jokes</h3>
+         <p class="text-8xl text-center mb-6">&#128540;</p>
+ 
+         
+         <p class="p-7 leading-6 text-white font-sans" id="jokes-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum nihil itaque, vitae fugit nesciunt et magnam voluptatibus reprehenderit. Dolores, vel.</p>
+        
+         <button class="h-10 w-40 bg-red-500 rounded-xl shadow-lg m-5" id="btn">Get Jokes</button>
+      </div>
+    
+     </div>
+ 
+    
+ 
+      <script>
+        let jokescont = document.getElementById("jokes-content");
+let getjokesbtn = document.getElementById("btn");
+let url = 'https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,explicit&type=single'
+
+let fetchjokes = ()=>{
+    fetch(url)
+    .then(res=>res.json())
+    .then((data)=>{
+        console.log(data.joke)
+        jokescont.innerText = `${data.joke}`;
+    })
+    .catch(err=>console.log(err)
+
+
+)
+}
+
+getjokesbtn.addEventListener("click",fetchjokes) ; 
+window.addEventListener("load",fetchjokes)
+      </script>
+      <script src="https://cdn.tailwindcss.com"></script>
+ </body>
+</html>

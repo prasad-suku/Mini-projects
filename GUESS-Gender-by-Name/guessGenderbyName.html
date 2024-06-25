@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Gender Name</title>
+
+    <style>
+
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background:rgb(75, 94, 145);
+
+        }
+
+        .container{
+            width: 450px;
+            border: 1px solid rgb(255, 255, 255);
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            padding: 20px;
+        }
+
+        .app-title{
+            color: white;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 1.6rem;
+        }
+
+        #input-container{
+
+            display: grid;
+            grid-template-columns: 9fr 3fr;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        #inputform,#predict-btn{
+            font-size: 19px;
+            padding: 0.4rem 0.6rem;
+            border: none;
+            outline: 0;
+            border-radius: 0.5rem;
+        }
+
+        #inputform{
+            color: hsl(180, 1%, 23%);
+        }
+
+        #predict-btn{
+            background: #033450;
+            color: white;
+        
+        }
+
+
+         #info{
+            padding: 2rem 1rem;
+            text-align: center;
+            border-radius: 0.5rem;
+            color: white;
+
+        }
+          .male{
+            background: rgb(51, 146, 146);
+          }
+        .female{
+            background: rosybrown;
+        }
+
+        #inpname{
+          font-size: 400;
+          margin-bottom: 1rem;
+          text-transform: capitalize;
+        }
+
+        #gender-icon{
+            width: 4rem;
+            color: white;
+            margin-bottom: 0.6rem;
+
+        }
+
+        #gender{
+            font-size: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.63rem;
+            color: black;
+        }
+
+
+
+      </style>
+</head>
+<body>
+    
+ 
+ <div class="container">
+    <h2 class="app-title">Predict Gender By Name</h2>
+    
+    <div id="input-container">
+        <input type="text" id="inputform" value="arun" class="inputform" placeholder="Name">
+        <button id="predict-btn">Predict</button>
+    </div>
+
+     <div id="result">
+        <div id="wrapper"></div>
+        <div id="error"></div>
+     </div>
+     
+ </div>
+
+
+
+<!-- script file here -->
+
+  <script>
+
+    // getting input thorough variable
+    let wrapper_container =  document.getElementById("wrapper");
+    let err_container = document.getElementById("error");
+
+
+    // API URL
+
+    let url = "https://api.genderize.io?name=";
+    
+    
+    // function to get gender reveal
+    
+    let predictgender = ()=>{
+        
+        let inputform = document.getElementById("inputform").value;
+   
+   
+   
+        //    clearing wraper div before appending values
+         wrapper_container.innerHTML = ""
+          
+        if(inputform.length>0){
+            fetch(url+inputform).then((res)=>res.json())
+            .then((data)=>{
+               let info_div = document.createElement("div");
+               info_div.setAttribute("id","info")
+          
+               //   setting details to div
+                
+                info_div.innerHTML = `<h2 id="inpname">${data.name}</h2>
+                  <img id="gender-icon"  alt="png">
+                  <h3 id="gender">${data.gender}</h3>
+                  <h3 id="prob">Probability : ${data.probability}</h3>`
+                  
+                //   console.log(info_div);
+                // appending the info div into wrapper container
+                wrapper_container.appendChild(info_div);
+                
+                // checking female or male 
+                if(data.gender === "male"){
+                    document.getElementById("gender-icon").setAttribute("scr","male-symbol-icon.webp")
+                    info_div.classList.add("male")
+                }
+                else{
+                    document.getElementById("gender-icon").setAttribute("scr","Female_symbol.svg (1).png")
+                    info_div.classList.add("female")
+                }
+                // inputform.value = ""
+            }
+           
+        ) }
+
+        else
+        {
+            err_container.innerHTML = "Please Enter a valid name";
+        }
+
+        
+        document.getElementById('inputform').value = ""
+        
+    }
+    
+    
+    document.getElementById("predict-btn").addEventListener("click",predictgender);
+    // window.addEventListener("load",predictgender);
+    
+  </script>
+
+
+
+
+</body>
+</html>

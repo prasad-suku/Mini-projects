@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quates Generates</title>
+<style>
+   body{
+    background: #ff5151ec;
+   }
+    .wrapper{
+        width: 500px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+       
+    }
+    
+    .container{
+        width: 100%;
+        padding: 20px;
+        color: white;
+        border-radius: 0.8rem;    
+        box-shadow:  6px 6px 10px #e33f3f,
+             -6px -6px 10px #ff4f4f;
+        text-align: center;     
+      
+
+    }
+
+    .container p{
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        line-height: 1.3rem;
+        text-align: justify;
+        padding: 2rem 2rem 0.3rem 2rem;
+     font-size: 1rem;
+     color:rgb(255, 255, 255);
+    }
+
+    .container h3{
+        text-align: left;
+        padding-left: 2rem;
+        text-transform: capitalize;
+        font-size: 1.1rem;
+         color: rgb(208, 255, 0);
+
+    }
+
+    .container button{
+        width: 130px;
+        padding: 7px 10px;
+        border: none;
+        border-radius: 7cap;
+       
+    }
+
+
+</style>
+
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="container">
+         <h2 style="text-decoration: underline">Random Quates.</h2>
+         <p id="quates">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint deleniti voluptate consequuntur amet fugit! Maxime doloremque commodi repellat voluptas!</p>
+         <h3 id="author">AUTHOR NAME | </h3>
+
+         <button>Generate Quates</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        // getting element
+
+        const quates  = document.getElementById("quates");
+        const author  = document.getElementById("author");
+        const btn = document.querySelector("button");
+        // console.log(quates,author,btn);
+        // api URL
+        let url = "http://api.fungenerators.com/fact/random?category=Countries&subcategory=USA";
+
+        let getquates = ()=>{
+            fetch(url)
+             .then((res)=>res.json())
+             .then((data)=>{
+                console.log(data);
+             })
+             .catch((err)=>
+            console.log(err.message))
+
+        }
+
+        getquates()
+    </script>
+</body>
+</html>
