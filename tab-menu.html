@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> TAG Menu  </title>
+
+     <style>
+        .tab-menus{
+  
+            display: grid;
+           grid-template-columns: 1fr 1fr 1fr;
+            background: #e6d7d7;
+            
+        }
+
+        .tab-menus h2{
+            border-right: 2px solid black;
+            padding:3px 8px;
+            
+        }
+
+     
+   
+        .tab-contents div{
+          
+            
+            padding: 2rem;
+            line-height: 26px;
+            font-size: 20px;
+            display: none;
+             
+        }
+
+        .tab-contents .active{
+            display: block;
+        }
+       
+        .tab-menus .active{
+           background: white;
+          
+        }
+
+            
+  
+     </style>
+</head>
+ <body>
+           
+          <div class="tab-menus">
+     
+               <h2 class="active">Tab 1</h2>
+                <h2>Tab 2</h2>
+                <h2>Tab 3</h2>
+        
+          </div>
+          
+     <div class="tab-contents">
+           <div class="active">
+            <h2>FIRST TAB</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat at nemo ratione recusandae sint veniam eius nulla repudiandae! Aliquam commodi eius numquam sed soluta adipisci possimus explicabo. Veritatis aliquam, perferendis odit dolorem nobis laboriosam commodi! Sapiente, sed enim quia suscipit culpa id vero aperiam perspiciatis nesciunt rem eveniet libero voluptates dolores officiis quas, ea ex cumque aliquam reiciendis tenetur facere!</p></div>
+           <div>
+             <h2>SECOND TAB</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat at nemo ratione recusandae sint veniam eius nulla repudiandae! Aliquam commodi eius numquam sed soluta adipisci possimus explicabo. Veritatis aliquam, perferendis odit dolorem nobis laboriosam commodi! Sapiente, sed enim quia suscipit culpa id vero aperiam perspiciatis nesciunt rem eveniet libero voluptates dolores officiis quas, ea ex cumque aliquam reiciendis tenetur facere!</p></div>
+           <div>
+            <h2>THIRD TAB</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat at nemo ratione recusandae sint veniam eius nulla repudiandae! Aliquam commodi eius numquam sed soluta adipisci possimus explicabo. Veritatis aliquam, perferendis odit dolorem nobis laboriosam commodi! Sapiente, sed enim quia suscipit culpa id vero aperiam perspiciatis nesciunt rem eveniet libero voluptates dolores officiis quas, ea ex cumque aliquam reiciendis tenetur facere!</p></div>
+
+     </div>     
+             
+  <script>
+
+    let tabs = document.querySelectorAll(".tab-menus h2")
+    let tab_content = document.querySelectorAll(" .tab-contents div");
+    // console.log(tabs,tab_content);
+
+      tabs.forEach((tab,index)=>{
+         tab.addEventListener("click",()=>{
+            tab_content.forEach((content)=>{
+               content.classList.remove("active")
+            })
+         tabs.forEach((tab)=>{
+            tab.classList.remove("active")
+         })
+
+        // adding class list to active index 
+        tab_content[index].classList.add("active")  
+        tabs[index].classList.add("active")
+         })
+
+      })
+
+        
+    
+
+  </script>
+
+</body>
+</html>
