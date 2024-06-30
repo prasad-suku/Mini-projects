@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+
+    <style>
+        body{
+            background: #58fa73;
+        }
+        form{
+            background: white;
+           width: 370px;
+            margin: 12rem auto;  
+        padding: 2rem;   }
+
+
+        .input-group{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0.4rem;
+            padding: 1rem;
+        }
+
+        #registerbtn{
+           
+        
+            background: #58fa73;
+            padding: 8px;
+            margin: 1rem;
+          border-radius: 6px;
+
+        }
+
+        .input-group .err{
+            color: red;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+
+        .input-group input{
+            border:2px solid rgb(0, 204, 255);
+        }
+
+        .input-group.error input{
+            border: 2px solid red;
+        }
+
+        .input-group.success input{
+            border: 2px solid green;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <form action="">
+        <div class="input-group">
+            <label for="uname">User name</label>
+            <input type="text" name="name" id="username" placeholder="Enter user name">
+            <div class="err"></div>
+        </div>
+
+        <div class="input-group">
+            <label for="eemail">Email</label>
+            <input type="text" name="email" id="email" placeholder="Enter email">
+            <div class="err"></div>
+        </div>
+
+        <div class="input-group">
+            <label for="cpassword">Password</label>
+            <input type="password" name="ppassword" id="password" placeholder="Enter password">
+            <div class="err"></div>
+        </div>
+       
+        <button type="submit" id="registerbtn">register</button>
+    </form>
+
+
+
+    <script>
+
+        let form =  document.querySelector("form");
+
+        let username = document.querySelector("#username");
+        let password = document.querySelector("#password");
+        let email = document.querySelector("#email");
+    
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            formvalidate();
+        })
+
+        function  formvalidate(){
+        let usernameval = username.value.trim();
+        let passwordval = password.value.trim();
+        let emailval = email.value.trim();
+
+        if(usernameval===""){
+            seterror(username,"username is empty");
+            alert("user name empty")
+        }else{
+            setsuccess(username)
+        }
+
+        if(emailval === ""){
+            seterror(email,"invalid Email")
+            alert("invalid email")
+        }
+        else{
+            setsuccess(email)
+        }
+
+        if(passwordval ===''){
+            seterror(password,"password is required")
+            alert("please give password")
+        }
+        else if(passwordval.length<7){
+            seterror(password,"please provide atleast 7 char")
+        }
+        else{
+            setsuccess(passsword)
+        }
+        }
+
+       function  seterror(element,message){
+            let inputcontainer = element.parentElement;
+             let errmessage =  inputcontainer.querySelector(".err")
+             errmessage.innerText = message;
+             inputcontainer.classList.add("error")     
+             inputcontainer.classList.remove("success")     
+
+        }
+
+        function  setsuccess(element){
+            let inputcontainer = element.parentElement;
+             let errmessage =  inputcontainer.querySelector(".err")
+             errmessage.innerText = "";  
+             inputcontainer.classList.remove("error")
+             inputcontainer.classList.add("success")   
+
+        }
+    </script>
+</body>
+</html>
