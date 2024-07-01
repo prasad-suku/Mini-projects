@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .pagination{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .pagination h2{
+           
+        
+            padding: 0.81rem;
+        }
+
+
+        .img-container{
+            display: flex;
+            flex-direction: column;
+            /* display: none; */
+        }
+        .img-container img{
+            max-width: 400px;
+            margin: 3rem auto;
+            /* height: 200px; */
+            display: none;
+            background: #000;
+            opacity: 0.4;
+            transform: 0.5s opacity;
+
+        }  .img-container img.active{
+            display: block;
+            opacity: 1;
+        }
+
+        .pagination h2{
+            background-color: rgb(61, 60, 60);
+            color: white;
+            opacity: 0.4;
+            transform: 0.5s opacity;
+        } 
+
+        .pagination h2.active{
+            opacity: 1;
+            background: green;
+            
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <div class="pagination">
+        <h2 class="active">1</h2>
+        <h2>2</h2>
+        <h2>3</h2>
+    </div>
+    <div class="img-container">
+        <img class="active" src="./img/IMG-20230808-WA0013.jpg" alt="">
+        <img src="./img/IMG-20230808-WA0013.png" alt="">
+        <img src="./img/IMG_20220619_181953_701(1).jpg" alt="">
+    </div>
+   
+    <script>
+
+        let paginations = document.querySelectorAll(".pagination h2");
+        let img_container = document.querySelectorAll(".img-container img")
+        console.log(paginations,img_container);
+
+        paginations.forEach((pag,index)=>{
+
+            pag.addEventListener("click",(event)=>{
+                console.log(event);
+                // to remove pagination active bar
+                  paginations.forEach((pag)=>{
+                    pag.classList.remove("active")
+                  })
+
+                //  to remove active img
+                img_container.forEach((img)=>{
+                    img.classList.remove("active")
+                })
+
+
+                // to add clicked page and add click address img
+
+                paginations[index].classList.add("active")
+                img_container[index].classList.add("active")
+            })
+        })
+    </script>
+</body>
+</html>
