@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rock paper game</title>
+</head>
+<body>
+    
+<script>
+
+let startGame = confirm("Shall we start the game?");
+
+if (startGame) {
+  let userChoice = prompt("Choose rock, paper, or scissor:");
+  if (userChoice) {
+    let userOne = userChoice.trim().toLowerCase();
+    if (userOne === 'rock' || userOne === 'scissor' || userOne === 'paper') {
+      let computerChoice = Math.floor(Math.random() * 3 + 1);
+      let computer = computerChoice === 1 ? 'rock' : computerChoice === 2 ? 'scissor' : 'paper';
+      console.log(computer);
+
+      let result = computer === userOne ? `Match tie` :
+        computer === 'rock' && userOne === 'paper' ? `User one: ${userOne}\nComputer: ${computer}\nUser one wins` :
+        computer === 'paper' && userOne === 'rock' ? `User one: ${userOne}\nComputer: ${computer}\nComputer wins` :
+        computer === 'scissor' && userOne === 'paper' ? `User one: ${userOne}\nComputer: ${computer}\nComputer wins` :
+        computer === 'paper' && userOne === 'scissor' ? `User one: ${userOne}\nComputer: ${computer}\nUser one wins` :
+        computer === 'rock' && userOne === 'scissor' ? `User one: ${userOne}\nComputer: ${computer}\nComputer wins`:"invalid";
+
+      alert(result);
+    } else {
+      alert("plese correct spelling");
+    }
+  } else {
+    confirm("I think you changed your mind, maybe later");
+  }
+} else {
+  let end = confirm("Ok, maybe later");
+}
+</script>
+
+</body>
+</html>
