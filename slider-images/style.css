@@ -1,0 +1,40 @@
+body{
+    background: #e6bcbc;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    min-height: 70vh;
+    border: 6px solid black;
+    width: 60%;
+    position: relative;
+    margin: 7rem auto;
+    background: url("./images/1.png") center/cover fixed no-repeat;
+    transition: background 1s linear;
+}
+
+.container .btn{
+    background-color: rgb(245, 255, 252);
+    border-radius: 7px;
+    padding: 6px 8px;
+    font-size: 19px;
+}
+
+.btn-left{
+    position: absolute;
+    top: 50%;
+    left: -2%;
+}
+
+.btn-right{
+    position: absolute;
+    top: 50%;
+    right: -2%;
+
+}
+.btn:hover{
+    background: #df917a;
+    color: white;
+    cursor: pointer;
+}
