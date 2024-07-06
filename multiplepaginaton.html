@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multiple pagination</title>
+
+    <style>
+        .container{
+            background: #c2bebe;
+            display: flex;
+            gap: 2rem;
+            
+        }
+
+        .row-1{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            margin-bottom: 3rem;
+        }
+
+        .row-1 h2{
+            border: 2px solid black;
+            padding: 3rem;
+            
+        }
+
+        .row-2{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+
+        .row-2 h2{
+            border: 2px solid black;
+            padding: 3rem;
+        }
+
+        .pagination{
+display: flex;
+justify-content: space-evenly;
+margin-top: 3rem;
+}
+
+.pagination h2{
+    border: 2px solid black;
+    padding: 1rem;
+    display: block;
+}
+
+.pagination h2.active{
+    background: green;
+    color:white;
+}
+
+
+.container .row-1,.row-2{
+    display: none;
+}
+
+
+.active{
+    display: block;
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>content boxs</h2>
+        
+     
+
+      <div class="row-1 active">
+        <h2>
+            element 1
+        </h2>
+        <h2>
+            element 2
+        </h2>
+        <h2>
+            element 3
+        </h2>
+      </div> 
+
+<!-- row 2 -->
+      <div class="row-2">
+        <h2>
+            element 4
+        </h2>
+        <h2>
+            element 5
+        </h2>
+        <h2>
+            element 6
+        </h2>
+      </div> 
+
+        
+    </div>
+
+    <div class="pagination">
+        <h2 class="active">1</h2>
+        <h2>2</h2>
+       
+     </div>
+
+    <script>
+
+    
+
+       let main_container =  document.querySelector(".container")
+    //    let result =  document.querySelector(".result")
+
+      let rows =  document.querySelectorAll(".container div")
+      let pagination = document.querySelectorAll(".pagination h2")
+//    console.log(rows,pagination);
+
+      pagination.forEach((page,index)=>{
+
+           page.addEventListener("click",(event)=>{
+            event.preventDefault();
+            pagination.forEach((page)=>{
+                page.classList.remove("active")
+            }) 
+            rows.forEach(row=>{
+                //  to remove current row
+                row.classList.remove("active")
+            }) 
+
+            // to add pagination and rows
+
+            page.classList.add("active")
+
+            rows[index].classList.add("active")
+
+           })
+      })
+   
+   </script>
+
+</body>
+</html>
