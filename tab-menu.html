@@ -49,20 +49,20 @@
            
           <div class="tab-menus">
      
-               <h2 class="active">Tab 1</h2>
+               <h2 >Tab 1</h2>
                 <h2>Tab 2</h2>
-                <h2>Tab 3</h2>
+                <h2 class="active">Tab 3</h2>
         
           </div>
           
      <div class="tab-contents">
-           <div class="active">
+           <div>
             <h2>FIRST TAB</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat at nemo ratione recusandae sint veniam eius nulla repudiandae! Aliquam commodi eius numquam sed soluta adipisci possimus explicabo. Veritatis aliquam, perferendis odit dolorem nobis laboriosam commodi! Sapiente, sed enim quia suscipit culpa id vero aperiam perspiciatis nesciunt rem eveniet libero voluptates dolores officiis quas, ea ex cumque aliquam reiciendis tenetur facere!</p></div>
            <div>
              <h2>SECOND TAB</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat at nemo ratione recusandae sint veniam eius nulla repudiandae! Aliquam commodi eius numquam sed soluta adipisci possimus explicabo. Veritatis aliquam, perferendis odit dolorem nobis laboriosam commodi! Sapiente, sed enim quia suscipit culpa id vero aperiam perspiciatis nesciunt rem eveniet libero voluptates dolores officiis quas, ea ex cumque aliquam reiciendis tenetur facere!</p></div>
-           <div>
+           <div class="active">
             <h2>THIRD TAB</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat at nemo ratione recusandae sint veniam eius nulla repudiandae! Aliquam commodi eius numquam sed soluta adipisci possimus explicabo. Veritatis aliquam, perferendis odit dolorem nobis laboriosam commodi! Sapiente, sed enim quia suscipit culpa id vero aperiam perspiciatis nesciunt rem eveniet libero voluptates dolores officiis quas, ea ex cumque aliquam reiciendis tenetur facere!</p></div>
 
@@ -70,28 +70,33 @@
              
   <script>
 
-    let tabs = document.querySelectorAll(".tab-menus h2")
-    let tab_content = document.querySelectorAll(" .tab-contents div");
-    // console.log(tabs,tab_content);
-
-      tabs.forEach((tab,index)=>{
-         tab.addEventListener("click",()=>{
-            tab_content.forEach((content)=>{
-               content.classList.remove("active")
-            })
-         tabs.forEach((tab)=>{
-            tab.classList.remove("active")
-         })
-
-        // adding class list to active index 
-        tab_content[index].classList.add("active")  
-        tabs[index].classList.add("active")
-         })
-
-      })
-
+   
+let tab_menu = document.querySelectorAll(".tab-menus h2");
+let tab_contents = document.querySelectorAll(".tab-contents div")
         
-    
+    console.log(tab_contents,tab_menu);
+
+tab_menu.forEach((tab,index)=>{
+  
+   tab.addEventListener("click",(event)=>{
+         // to remove active class from tab_menu by clicking any one tab
+           tab_menu.forEach(tab=>{
+            tab.classList.remove("active")
+           })
+         
+            tab_contents.forEach((content)=>{
+                 content.classList.remove("active")
+          })
+
+     console.log(event.target);
+          tab_menu[index].classList.add("active")
+          tab_contents[index].classList.add("active")
+    })      
+      
+  
+
+   })
+     
 
   </script>
 
